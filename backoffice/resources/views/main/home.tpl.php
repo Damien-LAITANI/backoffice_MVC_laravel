@@ -1,3 +1,7 @@
+<?php
+    // d($products[0]->tag);
+?>
+
 <div class="container my-4">
         <p class="display-4">
             Bienvenue dans le backOffice <strong>Dans les shoe</strong>...
@@ -20,8 +24,8 @@
                                 if (isset($categories)) {
                                     foreach($categories as $category): ?>
                                     <tr>
-                                        <th scope="row"><?= $category->getId() ?></th>
-                                        <td><?= $category->getName() ?></td>
+                                        <th scope="row"><?= $category->id ?></th>
+                                        <td><?= $category->name ?></td>
                                         <td class="text-end">
                                             <a href="" class="btn btn-sm btn-warning">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
@@ -67,8 +71,8 @@
                                 if(isset($products)) {
                                     foreach($products as $product): ?>
                                 <tr>
-                                    <th scope="row"><?= $product->getId() ?></th>
-                                    <td><?= $product->getName() ?></td>
+                                    <th scope="row"><?= $product->id ?></th>
+                                    <td><?= $product->name ?></td>
                                     <td class="text-end">
                                         <a href="" class="btn btn-sm btn-warning">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
