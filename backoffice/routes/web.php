@@ -22,5 +22,6 @@ Route::get('/', [MainController::class, 'home'])->name('home');
 Route::get('/categorie', [CategoryController::class, 'list'])->name('category-list');
 Route::get('/categorie/ajout', [CategoryController::class, 'add'])->name('category-add');
 Route::post('/categorie/creer', [CategoryController::class, 'create'])->name('category-create');
-Route::get('/categorie/modifier/{id}', [CategoryController::class, 'edit'])->name('category-edit');
+Route::get('/categorie/modifier/{id}', [CategoryController::class, 'edit'])->name('category-edit')->whereNumber('id');
+Route::post('/categorie/update/{id}', [CategoryController::class, 'update'])->name('category-update')->whereNumber('id');
 Route::get('/categorie/ordre', [CategoryController::class, 'order'])->name('category-order');
