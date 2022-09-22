@@ -4,7 +4,7 @@
 
 <div class="container my-4">
         <p class="display-4">
-            Bienvenue dans le backOffice <strong>Dans les shoe</strong>...
+            Bienvenue dans le backOffice <strong>Bédacier</strong>...
         </p>
         <div class="row mt-5">
             <div class="col-12 col-md-6">
@@ -27,7 +27,7 @@
                                         <th scope="row"><?= $category->id ?></th>
                                         <td><?= $category->name ?></td>
                                         <td class="text-end">
-                                            <a href="" class="btn btn-sm btn-warning">
+                                            <a href="<?= route('category-edit', ['id' => $category->id]) ?>" class="btn btn-sm btn-warning">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </a>
                                             <!-- Example single danger button -->
@@ -49,7 +49,7 @@
                             </tbody>
                         </table>
                         <div class="d-grid gap-2">
-                            <a href="categories.html" class="btn btn-success">Voir plus</a>
+                            <a href="<?= route('category-list') ?>" class="btn btn-success">Voir plus</a>
                         </div>
                     </div>
                 </div>
