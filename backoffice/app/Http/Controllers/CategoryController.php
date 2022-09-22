@@ -6,11 +6,12 @@ use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends CoreController {
-    public function list()
+    public function list(Request $request)
     {
         $categories = Category::all();
         $this->show('category/list', [
             'categories' => $categories,
+            'delete_message' => $request->session()->get('delete')
         ]);
     }
 
@@ -119,5 +120,17 @@ class CategoryController extends CoreController {
         $this->show('category/order', [
             'categories' => $categories
         ]);
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $category = Category::find($id);
+
+        $isDeleted = $category->delete();
+
+        if ($isDeleted) {
+            $request->session()->flash('delete', 'La catégorie <strong>' . $category->name . '</strong> a bien été supprimée.');
+           return redirect()->back();
+        }
     }
 }

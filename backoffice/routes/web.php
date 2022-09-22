@@ -25,3 +25,4 @@ Route::post('/categorie/creer', [CategoryController::class, 'create'])->name('ca
 Route::get('/categorie/modifier/{id}', [CategoryController::class, 'edit'])->name('category-edit')->whereNumber('id');
 Route::post('/categorie/update/{id}', [CategoryController::class, 'update'])->name('category-update')->whereNumber('id');
 Route::get('/categorie/ordre', [CategoryController::class, 'order'])->name('category-order');
+Route::get('/categorie/{id}', [CategoryController::class, 'delete'])->name('category-delete')->whereNumber('id');

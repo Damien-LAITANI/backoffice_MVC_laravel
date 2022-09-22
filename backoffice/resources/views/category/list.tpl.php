@@ -5,6 +5,7 @@
 <div class="container my-4">
         <a href="<?= route('category-add') ?>" class="btn btn-success float-end">Ajouter</a>
         <h2>Liste des catégories</h2>
+        <p class="bg-info <?= isset($delete_message) ?  'p-3' : '' ?>"><?= $delete_message ?></p>
         <table class="table table-hover mt-4">
             <thead>
                 <tr>
@@ -25,7 +26,7 @@
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
                         <!-- Example single danger button -->
-                        <a href="" class="btn btn-sm btn-danger">
+                        <a href="<?= route('category-delete', ['id' => $category->id]) ?>" class="btn btn-sm btn-danger">
                             <i class="fa fa-trash-o" aria-hidden="true"></i>
                         </a>
                     </td>
