@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 // route de la page home
 Route::get('/', [MainController::class, 'home'])->name('home');
 
-// route de la section Catégorie
+// routes de la section Catégorie
 Route::get('/categorie', [CategoryController::class, 'list'])->name('category-list');
 Route::get('/categorie/ajout', [CategoryController::class, 'add'])->name('category-add');
 Route::post('/categorie/creer', [CategoryController::class, 'create'])->name('category-create');
@@ -26,3 +27,6 @@ Route::get('/categorie/modifier/{id}', [CategoryController::class, 'edit'])->nam
 Route::post('/categorie/update/{id}', [CategoryController::class, 'update'])->name('category-update')->whereNumber('id');
 Route::get('/categorie/ordre', [CategoryController::class, 'order'])->name('category-order');
 Route::get('/categorie/{id}', [CategoryController::class, 'delete'])->name('category-delete')->whereNumber('id');
+
+// routes de la section Produit
+Route::get('/produit', [ProductController::class, 'list'])->name('product-list');
