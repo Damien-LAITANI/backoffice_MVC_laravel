@@ -20,7 +20,7 @@
                             <a class="nav-link" href="<?= route('category-list') ?>">Catégories</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Produits</a>
+                            <a class="nav-link" href="<?= route('product-list') ?>">Produits</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= route('type-list') ?>">Types</a>
