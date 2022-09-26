@@ -30,3 +30,4 @@ Route::get('/categorie/{id}', [CategoryController::class, 'delete'])->name('cate
 
 // routes de la section Produit
 Route::get('/produit', [ProductController::class, 'list'])->name('product-list');
+Route::get('/produit/ajout', [ProductController::class, 'add'])->name('product-add');
