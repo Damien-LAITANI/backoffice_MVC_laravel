@@ -37,7 +37,6 @@ Route::get('/marque/ajout', [BrandController::class, 'add'])->name('brand-add');
 Route::post('/marque/creer', [BrandController::class, 'create'])->name('brand-create');
 Route::get('/marque/modifier/{id}', [BrandController::class, 'edit'])->name('brand-edit')->whereNumber('id');
 Route::post('/marque/update/{id}', [BrandController::class, 'update'])->name('brand-update')->whereNumber('id');
-Route::get('/marque/ordre', [BrandController::class, 'order'])->name('brand-order');
 Route::get('/marque/{id}', [BrandController::class, 'delete'])->name('brand-delete')->whereNumber('id');
 
 // routes de la section Type
@@ -46,7 +45,6 @@ Route::get('/type/ajout', [TypeController::class, 'add'])->name('type-add');
 Route::post('/type/creer', [TypeController::class, 'create'])->name('type-create');
 Route::get('/type/modifier/{id}', [TypeController::class, 'edit'])->name('type-edit')->whereNumber('id');
 Route::post('/type/update/{id}', [TypeController::class, 'update'])->name('type-update')->whereNumber('id');
-Route::get('/type/ordre', [TypeController::class, 'order'])->name('type-order');
 Route::get('/type/{id}', [TypeController::class, 'delete'])->name('type-delete')->whereNumber('id');
 
 // routes de la section Type
@@ -55,7 +53,6 @@ Route::get('/tag/ajout', [TagController::class, 'add'])->name('tag-add');
 Route::post('/tag/creer', [TagController::class, 'create'])->name('tag-create');
 Route::get('/tag/modifier/{id}', [TagController::class, 'edit'])->name('tag-edit')->whereNumber('id');
 Route::post('/tag/update/{id}', [TagController::class, 'update'])->name('tag-update')->whereNumber('id');
-Route::get('/tag/ordre', [TagController::class, 'order'])->name('tag-order');
 Route::get('/tag/{id}', [TagController::class, 'delete'])->name('tag-delete')->whereNumber('id');
 
 // routes de la section Produit
