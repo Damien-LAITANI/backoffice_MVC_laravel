@@ -34,3 +34,4 @@ Route::get('/produit/ajout', [ProductController::class, 'add'])->name('product-a
 Route::post('/produit/creer', [ProductController::class, 'create'])->name('product-create');
 Route::get('/produit/modifier/{id}', [ProductController::class, 'edit'])->name('product-edit')->whereNumber('id');
 Route::post('/produit/update/{id}', [ProductController::class, 'update'])->name('product-update')->whereNumber('id');
+Route::get('/produit/{id}', [ProductController::class, 'delete'])->name('product-delete')->whereNumber('id');
