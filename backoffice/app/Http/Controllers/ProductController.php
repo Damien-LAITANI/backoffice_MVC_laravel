@@ -10,12 +10,13 @@ use Illuminate\Http\Request;
 
 class ProductController extends CoreController
 {
-    public function list()
+    public function list(Request $request)
     {
         $products = Product::all();
 
         $this->show('product/list', [
-            'products' => $products
+            'products' => $products,
+            'delete_message' => $request->session()->get('delete')
         ]);
     }
 
@@ -136,5 +137,17 @@ class ProductController extends CoreController
             return redirect('produit');
         }
         return redirect('produit/modifier/' . $id);
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $product = Product::find($id);
+
+        $isDeleted = $product->delete();
+
+        if ($isDeleted) {
+            $request->session()->flash('delete', 'Le produit <strong>' . $product->name . '</strong> a bien été supprimé.');
+            return redirect()->back();
+        }
     }
 }

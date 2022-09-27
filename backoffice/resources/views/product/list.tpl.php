@@ -1,6 +1,7 @@
 <div class="container my-4">
     <a href="<?= route('product-add') ?>" class="btn btn-success float-end">Ajouter</a>
     <h2>Liste des produits</h2>
+    <p class="bg-info <?= isset($delete_message) ?  'p-3' : '' ?>"><?= $delete_message ?></p>
     <table class="table table-hover mt-4">
         <thead>
             <tr>
@@ -25,10 +26,9 @@
                         </a>
                         <!-- Example single danger button -->
                         <div class="btn-group">
-                            <a  href=""  class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <a  href="<?= route('product-delete', ['id' => $product->id]) ?>"  class="btn btn-sm btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                             </a>
-
                         </div>
                     </td>
                 </tr>
