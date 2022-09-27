@@ -23,13 +23,13 @@
                             <a class="nav-link" href="<?= route('product-list') ?>">Produits</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Types</a>
+                            <a class="nav-link" href="<?= route('type-list') ?>">Types</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Marques</a>
+                            <a class="nav-link" href="<?= route('brand-list') ?>">Marques</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Tags</a>
+                            <a class="nav-link" href="<?= route('tag-list') ?>">Tags</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="<?= route('category-order') ?>">Sélections Accueil</a>

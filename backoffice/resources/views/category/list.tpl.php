@@ -1,7 +1,3 @@
-<?php
-    // d($categories);
-?>
-
 <div class="container my-4">
         <a href="<?= route('category-add') ?>" class="btn btn-success float-end">Ajouter</a>
         <h2>Liste des catégories</h2>
