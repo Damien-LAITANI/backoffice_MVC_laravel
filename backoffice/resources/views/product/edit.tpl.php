@@ -2,36 +2,43 @@
     <a href="<?= route('product-list') ?>" class="btn btn-success float-end">Retour</a>
     <h2>Mettre à jour un produit</h2>
 
-    <form action="" method="POST" class="mt-5">
+    <form action="<?= route('product-update', ['id' => $product->id]) ?>" method="POST" class="mt-5">
+        <?= csrf_field() ?>
         <div class="mb-3">
             <label for="name" class="form-label">Nom</label>
-            <input type="text" name="name" class="form-control" id="name" placeholder="Nom du produit" value="<?= $product->name ?>">
+            <input type="text" name="name" class="form-control" id="name" placeholder="Nom du produit" value="<?= old('name') ?? $product->name ?>">
+            <p class="text-danger"><?= $errors_messages['name'][0] ?? '' ?></p>
         </div>
         <div class="mb-3">
             <label for="description" class="form-label">Description</label>
-            <input type="text" name="description" class="form-control" id="description" placeholder="Description" aria-describedby="subtitleHelpBlock" value="<?= $product->discription ?>">
+            <input type="text" name="description" class="form-control" id="description" placeholder="Description" aria-describedby="subtitleHelpBlock" value="<?= old('description') ?? $product->description ?>">
             <small id="subtitleHelpBlock" class="form-text text-muted">
                 Sera affiché sur la page d'accueil comme bouton devant l'image
             </small>
+            <p class="text-danger"><?= $errors_messages['description'][0] ?? '' ?></p>
         </div>
         <div class="mb-3">
             <label for="picture" class="form-label">Image</label>
-            <input type="text" name="picture" class="form-control" id="picture" placeholder="image jpg, gif, svg, png" aria-describedby="pictureHelpBlock" value="<?= $product->picture ?>">
+            <input type="text" name="picture" class="form-control" id="picture" placeholder="image jpg, gif, svg, png" aria-describedby="pictureHelpBlock" value="<?= old('picture') ?? $product->picture ?>">
             <small id="pictureHelpBlock" class="form-text text-muted">
-                URL relative d'une image (jpg, gif, svg ou png) fournie sur <a href="https://benoclock.github.io/S06-images/" target="_blank">cette page</a>
+                URL relative d'une image (jpg, gif, svg ou png) fournie sur <a href="#" target="_blank">cette page</a>
             </small>
+            <p class="text-danger"><?= $errors_messages['picture'][0] ?? '' ?></p>
         </div>
         <div class="mb-3">
             <label for="price" class="form-label">Prix</label>
-            <input type="number" name="price" class="form-control" id="price" placeholder="0" value="<?= $product->price ?>">
+            <input type="number" name="price" class="form-control" id="price" placeholder="0" value="<?= old('price') ?? $product->price ?>">
+            <p class="text-danger"><?= $errors_messages['price'][0] ?? '' ?></p>
         </div>
         <div class="mb-3">
             <label for="rate" class="form-label">Note</label>
-            <input type="number" name="rate" class="form-control" id="rate" placeholder="0" value="<?= $product->rate ?>">
+            <input type="number" name="rate" class="form-control" id="rate" placeholder="0" value="<?= old('rate') ?? $product->rate ?>">
+            <p class="text-danger"><?= $errors_messages['rate'][0] ?? '' ?></p>
         </div>
         <div class="mb-3">
             <label for="status" class="form-label">Disponibilité</label>
-            <input type="number" name="status" class="form-control" id="status" placeholder="1" value="<?= $product->status ?>">
+            <input type="number" name="status" class="form-control" id="status" placeholder="1" value="<?= old('status') ?? $product->status ?>">
+            <p class="text-danger"><?= $errors_messages['status'][0] ?? '' ?></p>
         </div>
 
         <!-- Select pour categories -->
@@ -43,6 +50,7 @@
                         <option value="<?= $category->id ?>"<?= $product->category->name === $category->name ? 'selected' : '' ?>><?= $category->name ?></option>
                     <?php endforeach; ?>
             </select>
+            <p class="text-danger"><?= $errors_messages['category'][0] ?? '' ?></p>
         </div>
 
         <!-- Select pour marques -->
@@ -54,6 +62,7 @@
                         <option value="<?= $brand->id ?>" <?= $product->brand->name === $brand->name ? 'selected' : '' ?>><?= $brand->name ?></option>
                     <?php endforeach; ?>
             </select>
+            <p class="text-danger"><?= $errors_messages['brand'][0] ?? '' ?></p>
         </div>
 
         <!-- Select pour types -->
@@ -65,6 +74,7 @@
                         <option value="<?= $type->id ?>" <?= $product->type->name === $type->name ? 'selected' : '' ?>><?= $type->name ?></option>
                     <?php endforeach; ?>
             </select>
+            <p class="text-danger"><?= $errors_messages['type'][0] ?? '' ?></p>
         </div>
 
 
