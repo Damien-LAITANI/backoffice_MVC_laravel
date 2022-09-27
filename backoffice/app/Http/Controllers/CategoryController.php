@@ -61,6 +61,7 @@ class CategoryController extends CoreController {
 
     public function edit(Request $request, $id)
     {
+
         $token = csrf_token();
 
         // En cas d'erreur on récupère les valeurs des messages dans la session
@@ -114,12 +115,50 @@ class CategoryController extends CoreController {
         return redirect('categorie/modifier/' . $id);
     }
 
-    public function order()
+    public function order(Request $request)
     {
         $categories = Category::all();
+
         $this->show('category/order', [
-            'categories' => $categories
+            'categories' => $categories,
+            'error_message' => $request->session()->get('order'),
+            'success_message' => $request->session()->get('success'),
         ]);
+    }
+
+    public function updateOrder(Request $request)
+    {
+        $validated = $request->validate([
+            'emplacement' => 'bail|required|array:1,2,3,4,5|size:5',
+        ],
+        [
+            'name.required' => 'Les emplacements sont requis',
+        ]);
+        $validated['emplacement'] = array_unique($validated['emplacement']);
+
+        if (sizeof($validated['emplacement']) === 5) {
+            $categories = Category::all();
+
+            foreach ($categories as $category) {
+                $newHomeOrder = array_search($category->id, $validated['emplacement']);
+                if ($newHomeOrder) {
+                    $category->home_order = $newHomeOrder;
+                } else {
+                    if ($category->home_order !== 0) {
+                        $category->home_order = 0;
+                    }
+                }
+                $isUpdated = $category->save();
+                if ($isUpdated) {
+                    $request->session()->flash('success', 'L\'ordre des catégories a été mis à jour.');
+                } else {
+                    $request->session()->flash('order', 'L\'ordre des catégories n\'a pas pu être modifier.');
+                }
+            }
+        } else {
+            $request->session()->flash('order', 'Des emplacements contiennent les mêmes catégories.');
+        }
+        return redirect('categorie/ordre');
     }
 
     public function delete(Request $request, $id)
