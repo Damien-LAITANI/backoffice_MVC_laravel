@@ -93,15 +93,6 @@ class TypeController extends CoreController {
         return redirect('type/modifier/' . $id);
     }
 
-    public function order()
-    {
-        $types = Type::all();
-
-        $this->show('type/order', [
-            'types' => $types
-        ]);
-    }
-
     public function delete(Request $request, $id)
     {
         $type = Type::find($id);

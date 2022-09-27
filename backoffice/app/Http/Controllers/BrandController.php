@@ -93,15 +93,6 @@ class BrandController extends CoreController {
         return redirect('marque/modifier/' . $id);
     }
 
-    public function order()
-    {
-        $brands = Brand::all();
-
-        $this->show('brand/order', [
-            'brands' => $brands
-        ]);
-    }
-
     public function delete(Request $request, $id)
     {
         $brand = Brand::find($id);
