@@ -31,3 +31,5 @@ Route::get('/categorie/{id}', [CategoryController::class, 'delete'])->name('cate
 // routes de la section Produit
 Route::get('/produit', [ProductController::class, 'list'])->name('product-list');
 Route::get('/produit/ajout', [ProductController::class, 'add'])->name('product-add');
+Route::post('/produit/creer', [ProductController::class, 'create'])->name('product-create');
+Route::get('/produit/modifier/{id}', [ProductController::class, 'edit'])->name('product-edit')->whereNumber('id');
