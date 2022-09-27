@@ -22,7 +22,7 @@ use Illuminate\Support\Facades\Route;
 // route de la page home
 Route::get('/', [MainController::class, 'home'])->name('home');
 
-// routes de la section Catégorie
+// route de la section Catégorie
 Route::get('/categorie', [CategoryController::class, 'list'])->name('category-list');
 Route::get('/categorie/ajout', [CategoryController::class, 'add'])->name('category-add');
 Route::post('/categorie/creer', [CategoryController::class, 'create'])->name('category-create');
