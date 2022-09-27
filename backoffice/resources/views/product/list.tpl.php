@@ -20,7 +20,7 @@
                     <td><?= $product->description ?></td>
                     <td><?= $product->price ?></td>
                     <td class="text-end">
-                        <a href="" class="btn btn-sm btn-warning">
+                        <a href="<?= route('product-edit', ['id' => $product->id]) ?>" class="btn btn-sm btn-warning">
                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                         </a>
                         <!-- Example single danger button -->
