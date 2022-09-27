@@ -93,15 +93,6 @@ class TagController extends CoreController {
         return redirect('tag/modifier/' . $id);
     }
 
-    public function order()
-    {
-        $tags = Tag::all();
-
-        $this->show('tag/order', [
-            'tags' => $tags
-        ]);
-    }
-
     public function delete(Request $request, $id)
     {
         $tag = Tag::find($id);
