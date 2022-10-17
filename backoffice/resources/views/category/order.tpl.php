@@ -1,6 +1,6 @@
 <div class="container my-4">
+    <p class="bg-danger <?= isset($error_message) ?  'p-2 text-white' : '' ?>"><?= $error_message ?></p>
     <h2>Les 5 catégories affichées sur la home page</h2>
-    <p class="bg-info <?= isset($error_message) ?  'p-3' : '' ?>"><?= $error_message ?></p>
     <form id="orderForm" action="" method="POST" class="mt-5">
         <?= csrf_field() ?>
         <div class="row">
@@ -17,6 +17,6 @@
                 </div>
             <?php endfor;?>
         <button type="submit" class="btn btn-primary btn-block mt-5">Valider</button>
-        <p class="bg-success mt-2 text-white <?= isset($success_message) ?  'p-3' : '' ?>"><?= $success_message ?></p>
+        <p class="bg-success mt-2 text-white <?= isset($success_message) ?  'p-2' : '' ?>"><?= $success_message ?></p>
     </form>
 </div>

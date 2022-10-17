@@ -12,7 +12,7 @@ class TypeController extends CoreController {
 
         $this->show('type/list', [
             'types' => $types,
-            'delete_message' => $request->session()->get('delete')
+            'success_message' => $request->session()->get('success')
         ]);
     }
 
@@ -51,6 +51,7 @@ class TypeController extends CoreController {
         $isInserted = $type->save();
 
         if ($isInserted) {
+            $request->session()->flash('success', 'Le type <strong>' . $type->name . '</strong> a bien été créé');
             return redirect('type');
         }
         return redirect('type/ajout');
@@ -96,6 +97,7 @@ class TypeController extends CoreController {
         $isInserted = $type->save();
 
         if ($isInserted) {
+            $request->session()->flash('success', 'Le type <strong>' . $type->name . '</strong> a bien été mis à jour');
             return redirect('type');
         }
         return redirect('type/modifier/' . $id);
@@ -110,7 +112,7 @@ class TypeController extends CoreController {
         $isDeleted = $type->delete();
 
         if ($isDeleted) {
-            $request->session()->flash('delete', 'Le type <strong>' . $type->name . '</strong> a bien été supprimé.');
+            $request->session()->flash('success', 'Le type <strong>' . $type->name . '</strong> a bien été supprimé');
            return redirect()->back();
         }
     }

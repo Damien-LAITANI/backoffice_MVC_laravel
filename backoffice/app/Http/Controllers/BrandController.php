@@ -12,7 +12,7 @@ class BrandController extends CoreController {
 
         $this->show('brand/list', [
             'brands' => $brands,
-            'delete_message' => $request->session()->get('delete')
+            'success_message' => $request->session()->get('success')
         ]);
     }
 
@@ -51,6 +51,7 @@ class BrandController extends CoreController {
         $isInserted = $brand->save();
 
         if ($isInserted) {
+            $request->session()->flash('success', 'La marque <strong>' . $brand->name . '</strong> a bien été créée');
             return redirect('marque');
         }
         return redirect('marque/ajout');
@@ -96,6 +97,7 @@ class BrandController extends CoreController {
         $isInserted = $brand->save();
 
         if ($isInserted) {
+            $request->session()->flash('success', 'La marque <strong>' . $brand->name . '</strong> a bien été mise à jour');
             return redirect('marque');
         }
         return redirect('marque/modifier/' . $id);
@@ -110,7 +112,7 @@ class BrandController extends CoreController {
         $isDeleted = $brand->delete();
 
         if ($isDeleted) {
-            $request->session()->flash('delete', 'La marque <strong>' . $brand->name . '</strong> a bien été supprimée.');
+            $request->session()->flash('success', 'La marque <strong>' . $brand->name . '</strong> a bien été supprimée');
            return redirect()->back();
         }
     }

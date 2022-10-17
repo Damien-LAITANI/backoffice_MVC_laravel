@@ -17,9 +17,6 @@ use Illuminate\Support\Facades\Auth;
                             <a class="nav-link <?= $currentPage === 'main/home' ? 'active' : '' ?>" href="<?= Route('home') ?>">Accueil <span class="sr-only">(current)</span></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link <?= $currentPage === 'user/list' ? 'active' : '' ?>" href="#">Utilisateurs</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link <?= $currentPage === 'category/list' ? 'active' : '' ?>" href="<?= route('category-list') ?>">Catégories</a>
                         </li>
                         <li class="nav-item">

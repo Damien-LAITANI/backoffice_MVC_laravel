@@ -3,11 +3,8 @@
 
     <form class=" g-3 needs-validation mt-5" action="<?= route('login') ?>" method="post">
         <?= csrf_field() ?>
-        <?php if (isset($errorList)) : ?>
-            <div class="alert alert-warning" role="alert">
-                <?= $errorList[0] ?>
-            </div>
-        <?php endif ?>
+        <p class="bg-success <?= session()->get('disconnected') !== null ?  'p-3 text-white' : '' ?>"><?= session()->get('disconnected') ?></p>
+
         <div class="mb-4">
             <label for="validationCustom01" class="form-label">Email</label>
             <input type="text" name="email" class="form-control" id="validationEmail" value="<?= old('email') ?? 'lucie@oclock.io' ?>" placeholder="test@test.test" required>

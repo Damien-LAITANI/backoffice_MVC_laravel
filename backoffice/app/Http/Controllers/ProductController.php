@@ -16,7 +16,7 @@ class ProductController extends CoreController
 
         $this->show('product/list', [
             'products' => $products,
-            'delete_message' => $request->session()->get('delete')
+            'success_message' => $request->session()->get('success')
         ]);
     }
 
@@ -44,7 +44,7 @@ class ProductController extends CoreController
         $this->authorize('create', Product::class);
         $validated = $request->validate([
             'name' => 'bail|required|string|max:64|unique:category,name',
-            'description' => 'string|required|min:3|max:64|nullable',
+            'description' => 'string|required|min:3|max:255|nullable',
             'picture' => 'string|max:128|nullable',
             'price' => 'required|numeric|digits_between:1,5',
             'rate' => 'required|numeric|max:5',
@@ -76,6 +76,7 @@ class ProductController extends CoreController
         $isInserted = $product->save();
 
         if ($isInserted) {
+            $request->session()->flash('success', 'Le produit <strong>' . $product->name . '</strong> a bien été créé');
             return redirect('produit');
         }
         return redirect('produit/ajout');
@@ -104,7 +105,7 @@ class ProductController extends CoreController
         $this->authorize('update', Product::class);
         $validated = $request->validate([
             'name' => 'bail|required|string|max:64|unique:category,name',
-            'description' => 'string|required|min:3|max:64|nullable',
+            'description' => 'string|required|min:3|max:255|nullable',
             'picture' => 'string|max:128|nullable',
             'price' => 'required|numeric',
             'rate' => 'required|numeric|max:5',
@@ -138,6 +139,7 @@ class ProductController extends CoreController
         $isInserted = $product->save();
 
         if ($isInserted) {
+            $request->session()->flash('success', 'Le produit <strong>' . $product->name . '</strong> a bien été mis à jour');
             return redirect('produit');
         }
         return redirect('produit/modifier/' . $id);
@@ -152,7 +154,7 @@ class ProductController extends CoreController
         $isDeleted = $product->delete();
 
         if ($isDeleted) {
-            $request->session()->flash('delete', 'Le produit <strong>' . $product->name . '</strong> a bien été supprimé.');
+            $request->session()->flash('success', 'Le produit <strong>' . $product->name . '</strong> a bien été supprimé');
             return redirect()->back();
         }
     }
