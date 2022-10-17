@@ -22,6 +22,7 @@ class ProductController extends CoreController
 
     public function add(Request $request)
     {
+        $this->authorize('create', Product::class);
         $errors_messages = isset($request->session()->all()['errors']) ? $request->session()->get('errors')->getMessages() : null;
 
         $token = csrf_token();
@@ -40,6 +41,7 @@ class ProductController extends CoreController
 
     public function create(Request $request)
     {
+        $this->authorize('create', Product::class);
         $validated = $request->validate([
             'name' => 'bail|required|string|max:64|unique:category,name',
             'description' => 'string|required|min:3|max:64|nullable',
@@ -81,6 +83,7 @@ class ProductController extends CoreController
 
     public function edit(Request $request,$id)
     {
+        $this->authorize('update', Product::class);
         $errors_messages = isset($request->session()->all()['errors']) ? $request->session()->get('errors')->getMessages() : null;
 
         $product = Product::find($id)->load('category')->load('brand')->load('type');
@@ -98,6 +101,7 @@ class ProductController extends CoreController
 
     public function update(Request $request, $id)
     {
+        $this->authorize('update', Product::class);
         $validated = $request->validate([
             'name' => 'bail|required|string|max:64|unique:category,name',
             'description' => 'string|required|min:3|max:64|nullable',
@@ -141,6 +145,8 @@ class ProductController extends CoreController
 
     public function delete(Request $request, $id)
     {
+        $this->authorize('delete', Product::class);
+
         $product = Product::find($id);
 
         $isDeleted = $product->delete();

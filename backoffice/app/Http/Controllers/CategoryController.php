@@ -17,6 +17,8 @@ class CategoryController extends CoreController {
 
     public function add(Request $request)
     {
+        $this->authorize('create', Category::class);
+
         $token = csrf_token();
 
         // En cas d'erreur on récupère les valeurs des messages dans la session
@@ -31,6 +33,8 @@ class CategoryController extends CoreController {
 
     public function create(Request $request)
     {
+        $this->authorize('create', Category::class);
+
         $validated = $request->validate( [
             'name' => 'bail|required|string|max:64|unique:category,name',
             'subtitle' => 'string|required|min:3|max:64|nullable',
@@ -61,6 +65,7 @@ class CategoryController extends CoreController {
 
     public function edit(Request $request, $id)
     {
+        $this->authorize('update', Category::class);
 
         $token = csrf_token();
 
@@ -79,6 +84,8 @@ class CategoryController extends CoreController {
 
     public function update(Request $request, $id)
     {
+        $this->authorize('update', Category::class);
+
         $validated = $request->validate([
             'name' => 'bail|required|string|max:64',
             'subtitle' => 'string|required|min:3|max:64|nullable',
@@ -117,6 +124,8 @@ class CategoryController extends CoreController {
 
     public function order(Request $request)
     {
+        $this->authorize('update', Category::class);
+
         $categories = Category::all();
 
         $this->show('category/order', [
@@ -128,6 +137,8 @@ class CategoryController extends CoreController {
 
     public function updateOrder(Request $request)
     {
+        $this->authorize('update', Category::class);
+
         $validated = $request->validate([
             'emplacement' => 'bail|required|array:1,2,3,4,5|size:5',
         ],
@@ -163,6 +174,8 @@ class CategoryController extends CoreController {
 
     public function delete(Request $request, $id)
     {
+        $this->authorize('delete', Category::class);
+
         $category = Category::find($id);
 
         $isDeleted = $category->delete();
