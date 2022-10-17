@@ -6,6 +6,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,7 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // route de la page home
-Route::get('/', [MainController::class, 'home'])->name('home');
+Route::get('/home', [MainController::class, 'home'])->name('home');
 
 // routes de la section Catégorie
 Route::get('/categorie', [CategoryController::class, 'list'])->name('category-list');
@@ -63,3 +64,7 @@ Route::post('/produit/creer', [ProductController::class, 'create'])->name('produ
 Route::get('/produit/modifier/{id}', [ProductController::class, 'edit'])->name('product-edit')->whereNumber('id');
 Route::post('/produit/update/{id}', [ProductController::class, 'update'])->name('product-update')->whereNumber('id');
 Route::get('/produit/{id}', [ProductController::class, 'delete'])->name('product-delete')->whereNumber('id');
+
+// routes authentification
+Route::get('/', [UserController::class, 'authentication'])->name('auth-view');
+Route::post('/connexion', [UserController::class, 'login'])->name('auth-connection');
