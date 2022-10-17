@@ -40,8 +40,6 @@
             <input type="number" name="status" class="form-control" id="status" placeholder="1" value="<?= old('status') ?>">
             <p class="text-danger"><?= $errors_messages['status'][0] ?? '' ?></p>
         </div>
-
-        <!-- Select pour categories -->
         <div class="mb-3">
             <label for="category" class="form-label">Categorie</label>
             <select name="category" id="category" class="form-control">
@@ -52,8 +50,6 @@
             </select>
             <p class="text-danger"><?= $errors_messages['category'][0] ?? '' ?></p>
         </div>
-
-        <!-- Select pour marques -->
         <div class="mb-3">
             <label for="brand" class="form-label">Marque</label>
             <select name="brand" id="brand" class="form-control">
@@ -64,8 +60,6 @@
             </select>
             <p class="text-danger"><?= $errors_messages['brand'][0] ?? '' ?></p>
         </div>
-
-        <!-- Select pour types -->
         <div class="mb-3">
             <label for="type" class="form-label">Types</label>
             <select name="type" id="type" class="form-control">
@@ -76,7 +70,6 @@
             </select>
             <p class="text-danger"><?= $errors_messages['type'][0] ?? '' ?></p>
         </div>
-
 
         <div class="d-grid gap-2">
             <button type="submit" class="btn btn-primary mt-5">Valider</button>

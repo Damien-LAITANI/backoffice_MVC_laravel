@@ -23,6 +23,7 @@
             <small id="pictureHelpBlock" class="form-text text-muted">
                 URL relative d'une image (jpg, gif, svg ou png) fournie sur <a href="" target="_blank">cette page</a>
             </small>
+            <p class="text-danger"><?= $errors_messages['picture'][0] ?? '' ?></p>
         </div>
         <div class="d-grid gap-2">
             <button type="submit" class="btn btn-primary mt-5">Valider</button>

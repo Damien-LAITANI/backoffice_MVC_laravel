@@ -12,7 +12,7 @@ class TagController extends CoreController {
 
         $this->show('tag/list', [
             'tags' => $tags,
-            'delete_message' => $request->session()->get('delete')
+            'success_message' => $request->session()->get('success')
         ]);
     }
 
@@ -51,6 +51,7 @@ class TagController extends CoreController {
         $isInserted = $tag->save();
 
         if ($isInserted) {
+            $request->session()->flash('success', 'Le tag <strong>' . $tag->name . '</strong> a bien été créé');
             return redirect('tag');
         }
         return redirect('tag/ajout');
@@ -96,6 +97,7 @@ class TagController extends CoreController {
         $isInserted = $tag->save();
 
         if ($isInserted) {
+            $request->session()->flash('success', 'Le tag <strong>' . $tag->name . '</strong> a bien été mis à jour');
             return redirect('tag');
         }
         return redirect('tag/modifier/' . $id);
@@ -110,7 +112,7 @@ class TagController extends CoreController {
         $isDeleted = $tag->delete();
 
         if ($isDeleted) {
-            $request->session()->flash('delete', 'Le tag <strong>' . $tag->name . '</strong> a bien été supprimé.');
+            $request->session()->flash('success', 'Le tag <strong>' . $tag->name . '</strong> a bien été supprimé');
            return redirect()->back();
         }
     }

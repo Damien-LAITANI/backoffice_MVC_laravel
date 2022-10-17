@@ -11,7 +11,7 @@ class CategoryController extends CoreController {
         $categories = Category::all();
         $this->show('category/list', [
             'categories' => $categories,
-            'delete_message' => $request->session()->get('delete')
+            'success_message' => $request->session()->get('success')
         ]);
     }
 
@@ -58,6 +58,7 @@ class CategoryController extends CoreController {
         $isInserted = $category->save();
 
         if ($isInserted) {
+            $request->session()->flash('success', 'La catégorie <strong>' . $category->name . '</strong> a bien été créée');
             return redirect('categorie');
         }
         return redirect('categorie/ajout');
@@ -117,6 +118,7 @@ class CategoryController extends CoreController {
         $isInserted = $category->save();
 
         if ($isInserted) {
+            $request->session()->flash('success', 'La catégorie <strong>' . $category->name . '</strong> a bien été mise à jour');
             return redirect('categorie');
         }
         return redirect('categorie/modifier/' . $id);
@@ -124,13 +126,11 @@ class CategoryController extends CoreController {
 
     public function order(Request $request)
     {
-        $this->authorize('update', Category::class);
-
         $categories = Category::all();
 
         $this->show('category/order', [
             'categories' => $categories,
-            'error_message' => $request->session()->get('order'),
+            'error_message' => $request->session()->get('error'),
             'success_message' => $request->session()->get('success'),
         ]);
     }
@@ -161,13 +161,13 @@ class CategoryController extends CoreController {
                 }
                 $isUpdated = $category->save();
                 if ($isUpdated) {
-                    $request->session()->flash('success', 'L\'ordre des catégories a été mis à jour.');
+                    $request->session()->flash('success', 'L\'ordre des catégories a été mis à jour');
                 } else {
-                    $request->session()->flash('order', 'L\'ordre des catégories n\'a pas pu être modifier.');
+                    $request->session()->flash('error', 'L\'ordre des catégories n\'a pas pu être modifier');
                 }
             }
         } else {
-            $request->session()->flash('order', 'Des emplacements contiennent les mêmes catégories.');
+            $request->session()->flash('error', 'Des emplacements contiennent les mêmes catégories');
         }
         return redirect('categorie/ordre');
     }
@@ -181,7 +181,7 @@ class CategoryController extends CoreController {
         $isDeleted = $category->delete();
 
         if ($isDeleted) {
-            $request->session()->flash('delete', 'La catégorie <strong>' . $category->name . '</strong> a bien été supprimée.');
+            $request->session()->flash('success', 'La catégorie <strong>' . $category->name . '</strong> a bien été supprimée');
            return redirect()->back();
         }
     }

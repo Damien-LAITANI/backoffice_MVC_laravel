@@ -1,7 +1,7 @@
 <div class="container my-4">
     <a href="<?= route('type-add') ?>" class="btn btn-success float-end">Ajouter</a>
     <h2>Liste des types</h2>
-    <p class="bg-info <?= isset($delete_message) ?  'p-3' : '' ?>"><?= $delete_message ?></p>
+    <p class="bg-success <?= isset($success_message) ?  'p-2 text-white' : '' ?>"><?= $success_message ?></p>
     <table class="table table-hover mt-4">
         <thead>
             <tr>
