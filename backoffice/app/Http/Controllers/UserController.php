@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class UserController extends CoreController {
+
     public function authentication(Request $request)
     {
         $error_email = $request->session()->get('errors') !== null ? $request->session()->get('errors')->first() : null;
@@ -28,10 +29,20 @@ class UserController extends CoreController {
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            d($request->session());die;
+            return redirect('/home');
         }
         return back()->withErrors([
             'email' => 'L\'email ou le mot de passe ne correspond pas',
         ])->onlyInput('email');
     }
+
+    public function logout(Request $request)
+    {
+        auth()->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        $request->session()->flash('disconnected', 'Vous avez bien été déconnecté');
+        return redirect('/');
+    }
+
 }

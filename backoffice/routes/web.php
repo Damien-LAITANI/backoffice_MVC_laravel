@@ -20,6 +20,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/** Routes nécessitant d'être connecté */
+Route::group(['middleware' => ['auth']], function () {
 // route de la page home
 Route::get('/home', [MainController::class, 'home'])->name('home');
 
@@ -64,7 +66,12 @@ Route::post('/produit/creer', [ProductController::class, 'create'])->name('produ
 Route::get('/produit/modifier/{id}', [ProductController::class, 'edit'])->name('product-edit')->whereNumber('id');
 Route::post('/produit/update/{id}', [ProductController::class, 'update'])->name('product-update')->whereNumber('id');
 Route::get('/produit/{id}', [ProductController::class, 'delete'])->name('product-delete')->whereNumber('id');
+});
+
+
+/** Routes ne nécessitant pas 'être connecté */
 
 // routes authentification
-Route::get('/', [UserController::class, 'authentication'])->name('auth-view');
-Route::post('/connexion', [UserController::class, 'login'])->name('auth-connection');
+Route::get('/', [UserController::class, 'authentication'])->name('authentication');
+Route::post('/connexion', [UserController::class, 'login'])->name('login');
+Route::get('/deconnexion', [UserController::class, 'logout'])->name('logout');

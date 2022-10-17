@@ -1,7 +1,7 @@
 <div class="container my-4">
     <h2>Se connnecter au BackOffice</h2>
 
-    <form class=" g-3 needs-validation mt-5" action="<?= route('auth-connection') ?>" method="post">
+    <form class=" g-3 needs-validation mt-5" action="<?= route('login') ?>" method="post">
         <?= csrf_field() ?>
         <?php if (isset($errorList)) : ?>
             <div class="alert alert-warning" role="alert">

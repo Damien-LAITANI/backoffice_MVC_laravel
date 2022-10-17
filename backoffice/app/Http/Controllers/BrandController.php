@@ -18,6 +18,8 @@ class BrandController extends CoreController {
 
     public function add(Request $request)
     {
+        $this->authorize('create', Brand::class);
+
         $token = csrf_token();
 
         // En cas d'erreur on récupère les valeurs des messages dans la session
@@ -32,6 +34,8 @@ class BrandController extends CoreController {
 
     public function create(Request $request)
     {
+        $this->authorize('create', Brand::class);
+
         $validated = $request->validate( [
             'name' => 'bail|required|string|max:64|unique:brand,name'
         ],
@@ -54,6 +58,8 @@ class BrandController extends CoreController {
 
     public function edit(Request $request, $id)
     {
+        $this->authorize('update', Brand::class);
+
         $token = csrf_token();
 
         // En cas d'erreur on récupère les valeurs des messages dans la session
@@ -71,6 +77,8 @@ class BrandController extends CoreController {
 
     public function update(Request $request, $id)
     {
+        $this->authorize('update', Brand::class);
+
         $validated = $request->validate([
             'name' => 'bail|required|string|max:64'
         ],
@@ -95,6 +103,8 @@ class BrandController extends CoreController {
 
     public function delete(Request $request, $id)
     {
+        $this->authorize('delete', Brand::class);
+
         $brand = Brand::find($id);
 
         $isDeleted = $brand->delete();
