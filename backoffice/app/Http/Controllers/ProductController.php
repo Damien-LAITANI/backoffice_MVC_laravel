@@ -83,7 +83,8 @@ class ProductController extends CoreController
     {
         $errors_messages = isset($request->session()->all()['errors']) ? $request->session()->get('errors')->getMessages() : null;
 
-        $product = Product::find($id)->load('category')->load('brand')->load('type');
+        $product = Product::find($id)->load('brand')->load('type')->load('category');
+        //d($product->category->name);
         $categories = Category::all();
         $brands = Brand::all();
         $types = Type::all();
