@@ -127,9 +127,11 @@ class CategoryController extends CoreController {
     public function order(Request $request)
     {
         $categories = Category::all();
+        $categoriesOrderByHomePage = Category::where('home_order', '>', 0)->orderBy('home_order', 'asc')->get()->all();
 
         $this->show('category/order', [
             'categories' => $categories,
+            'categoriesOrderByHomePage' => $categoriesOrderByHomePage,
             'error_message' => $request->session()->get('error'),
             'success_message' => $request->session()->get('success'),
         ]);
