@@ -22,7 +22,7 @@
             <label for="picture" class="form-label">Image</label>
             <input type="text" name="picture" class="form-control" id="picture" placeholder="image jpg, gif, svg, png" aria-describedby="pictureHelpBlock" value="<?= old('picture') ?? $category->picture ?>">
             <small id="pictureHelpBlock" class="form-text text-muted">
-                URL relative d'une image (jpg, gif, svg ou png) fournie sur <a href="https://benoclock.github.io/S06-images/" target="_blank">cette page</a>
+                URL relative d'une image (jpg, gif, svg ou png)
             </small>
             <p class="text-danger"><?= $errors_messages['picture'][0] ?? '' ?></p>
         </div>

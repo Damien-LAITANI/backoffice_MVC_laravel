@@ -23,7 +23,8 @@ class TypeController extends CoreController
 
         $this->show('type/list', [
             'types' => $types,
-            'success_message' => $request->session()->get('success')
+            'success_message' => $request->session()->get('success'),
+            'error_message' => $request->session()->get('error'),
         ]);
     }
 
@@ -165,5 +166,7 @@ class TypeController extends CoreController
             $request->session()->flash('success', 'Le type <strong>' . $type->name . '</strong> a bien été supprimé');
            return redirect()->back();
         }
+        $request->session()->flash('error', 'Le type <strong>' . $type->name . '</strong> n\'a pas pu être supprimé');
+        return redirect()->back();
     }
 }

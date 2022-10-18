@@ -26,7 +26,8 @@ class ProductController extends CoreController
 
         $this->show('product/list', [
             'products' => $products,
-            'success_message' => $request->session()->get('success')
+            'success_message' => $request->session()->get('success'),
+            'error_message' => $request->session()->get('error'),
         ]);
     }
 
@@ -206,5 +207,7 @@ class ProductController extends CoreController
             $request->session()->flash('success', 'Le produit <strong>' . $product->name . '</strong> a bien été supprimé');
             return redirect()->back();
         }
+        $request->session()->flash('error', 'Le produit <strong>' . $product->name . '</strong> n\'a pas pu être supprimée');
+        return redirect()->back();
     }
 }

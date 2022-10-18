@@ -30,16 +30,10 @@
                                             <a href="<?= route('category-edit', ['id' => $category->id]) ?>" class="btn btn-sm btn-warning">
                                                 <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                             </a>
-                                            <!-- Example single danger button -->
                                             <div class="btn-group">
-                                                <button type="button" class="btn btn-sm btn-danger dropdown-toggle"
-                                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <a href="<?= route('category-delete', ['id' => $category->id]) ?>" class="btn btn-sm btn-danger">
                                                     <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                                </button>
-                                                <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="#">Oui, je veux supprimer</a>
-                                                    <a class="dropdown-item" href="#" data-toggle="dropdown">Oups !</a>
-                                                </div>
+                                                </a>
                                             </div>
                                         </td>
                                     </tr>
@@ -74,19 +68,13 @@
                                     <th scope="row"><?= $product->id ?></th>
                                     <td><?= $product->name ?></td>
                                     <td class="text-end">
-                                        <a href="" class="btn btn-sm btn-warning">
+                                        <a href="<?= route('product-edit', ['id' => $product->id]) ?>" class="btn btn-sm btn-warning">
                                             <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                         </a>
-                                        <!-- Example single danger button -->
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-danger dropdown-toggle"
-                                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <a href="<?= route('product-delete', ['id' => $product->id]) ?>" class="btn btn-sm btn-danger">
                                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
-                                            </button>
-                                            <div class="dropdown-menu">
-                                                <a class="dropdown-item" href="#">Oui, je veux supprimer</a>
-                                                <a class="dropdown-item" href="#" data-toggle="dropdown">Oups !</a>
-                                            </div>
+                                            </a>
                                         </div>
                                     </td>
                                 </tr>
@@ -96,7 +84,7 @@
                             </tbody>
                         </table>
                         <div class="d-grid gap-2">
-                            <a href="products.html" class="btn btn-success">Voir plus</a>
+                            <a href="<?= route('product-list') ?>" class="btn btn-success">Voir plus</a>
                         </div>
                     </div>
                 </div>
