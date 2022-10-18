@@ -139,21 +139,21 @@ class CategoryController extends CoreController {
 
     public function updateOrder(Request $request)
     {
-        $this->authorize('update', Category::class);
+        //$this->authorize('update', Category::class);
 
         $validated = $request->validate([
-            'emplacement' => 'bail|required|array:1,2,3,4,5|size:5',
+            'location' => 'bail|required|array:1,2,3,4,5|size:5',
         ],
         [
             'name.required' => 'Les emplacements sont requis',
         ]);
-        $validated['emplacement'] = array_unique($validated['emplacement']);
+        $validated['location'] = array_unique($validated['location']);
 
-        if (sizeof($validated['emplacement']) === 5) {
+        if (sizeof($validated['location']) === 5) {
             $categories = Category::all();
 
             foreach ($categories as $category) {
-                $newHomeOrder = array_search($category->id, $validated['emplacement']);
+                $newHomeOrder = array_search($category->id, $validated['location']);
                 if ($newHomeOrder) {
                     $category->home_order = $newHomeOrder;
                 } else {
