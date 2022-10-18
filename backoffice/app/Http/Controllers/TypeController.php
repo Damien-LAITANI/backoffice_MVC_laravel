@@ -3,10 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Type;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
-class TypeController extends CoreController {
-    public function list(Request $request)
+class TypeController extends CoreController
+{
+    /**
+     * Méthode gérant la page affichant la liste des types
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function list(Request $request): void
     {
         $types = Type::all();
 
@@ -16,7 +27,14 @@ class TypeController extends CoreController {
         ]);
     }
 
-    public function add(Request $request)
+    /**
+     * Méthode gérant la page permettant d'ajouter un type
+     *
+     * @param Request $request
+     * @return void
+     * @throws AuthorizationException
+     */
+    public function add(Request $request): void
     {
         $this->authorize('create', Type::class);
 
@@ -32,7 +50,14 @@ class TypeController extends CoreController {
         ]);
     }
 
-    public function create(Request $request)
+    /**
+     * Méthode gérant la page recevant les données du formulaire d'ajout d'un type
+     *
+     * @param Request $request
+     * @return Application|RedirectResponse|Redirector
+     * @throws AuthorizationException
+     */
+    public function create(Request $request): Redirector|RedirectResponse|Application
     {
         $this->authorize('create', Type::class);
 
@@ -57,7 +82,15 @@ class TypeController extends CoreController {
         return redirect('type/ajout');
     }
 
-    public function edit(Request $request, $id)
+    /**
+     * Méthode gérant la page permettant d'afficher la formulaire d'édition d'un type
+     *
+     * @param Request $request
+     * @param int $id
+     * @return void
+     * @throws AuthorizationException
+     */
+    public function edit(Request $request, int $id): void
     {
         $this->authorize('update', Type::class);
 
@@ -76,7 +109,16 @@ class TypeController extends CoreController {
         ]);
     }
 
-    public function update(Request $request, $id)
+    /**
+     * Méthode gérant la page traitant les informations envoyées par le formulaire
+     * d'édition d'un type
+     *
+     * @param Request $request
+     * @param int $id
+     * @return Application|Redirector|RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function update(Request $request, int $id): Redirector|RedirectResponse|Application
     {
         $this->authorize('update', Type::class);
 
@@ -103,7 +145,15 @@ class TypeController extends CoreController {
         return redirect('type/modifier/' . $id);
     }
 
-    public function delete(Request $request, $id)
+    /**
+     * Méthode gérant la suppression d'un type
+     *
+     * @param Request $request
+     * @param int $id
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function delete(Request $request, $id): RedirectResponse
     {
         $this->authorize('delete', Type::class);
 

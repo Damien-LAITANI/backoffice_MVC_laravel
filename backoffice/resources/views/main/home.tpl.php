@@ -4,7 +4,7 @@
 
 <div class="container my-4">
         <p class="display-4">
-            Bienvenue dans le backOffice <strong>Bedacier</strong>...
+            Bienvenue dans le backOffice de <strong>Bedacier</strong>...
         </p>
         <div class="row mt-5">
             <div class="col-12 col-md-6">

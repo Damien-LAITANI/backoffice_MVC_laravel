@@ -3,10 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
-class CategoryController extends CoreController {
-    public function list(Request $request)
+class CategoryController extends CoreController
+{
+    /**
+     * Méthode gérant la page affichant la liste des catégories
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function list(Request $request): void
     {
         $categories = Category::all();
         $this->show('category/list', [
@@ -15,7 +26,14 @@ class CategoryController extends CoreController {
         ]);
     }
 
-    public function add(Request $request)
+    /**
+     * Méthode gérant la page permettant d'ajouter une catégorie
+     *
+     * @param Request $request
+     * @return void
+     * @throws AuthorizationException
+     */
+    public function add(Request $request): void
     {
         $this->authorize('create', Category::class);
 
@@ -31,7 +49,14 @@ class CategoryController extends CoreController {
         ]);
     }
 
-    public function create(Request $request)
+    /**
+     * Méthode gérant la page recevant les données du formulaire d'ajout d'une catégorie
+     *
+     * @param Request $request
+     * @return Application|RedirectResponse|Redirector
+     * @throws AuthorizationException
+     */
+    public function create(Request $request): Redirector|RedirectResponse|Application
     {
         $this->authorize('create', Category::class);
 
@@ -64,7 +89,15 @@ class CategoryController extends CoreController {
         return redirect('categorie/ajout');
     }
 
-    public function edit(Request $request, $id)
+    /**
+     * Méthode gérant la page permettant d'afficher la formulaire d'édition d'une catégorie
+     *
+     * @param Request $request
+     * @param int $id
+     * @return void
+     * @throws AuthorizationException
+     */
+    public function edit(Request $request, int $id): void
     {
         $this->authorize('update', Category::class);
 
@@ -83,7 +116,16 @@ class CategoryController extends CoreController {
         ]);
     }
 
-    public function update(Request $request, $id)
+    /**
+     * Méthode gérant la page traitant les informations envoyées par le formulaire
+     * d'édition d'une catégorie
+     *
+     * @param Request $request
+     * @param int $id
+     * @return Application|RedirectResponse|Redirector
+     * @throws AuthorizationException
+     */
+    public function update(Request $request, int $id): Redirector|RedirectResponse|Application
     {
         $this->authorize('update', Category::class);
 
@@ -124,7 +166,16 @@ class CategoryController extends CoreController {
         return redirect('categorie/modifier/' . $id);
     }
 
-    public function order(Request $request)
+    /**
+     * Méthode gérant la page affichant le formulaire
+     * de sélection des catégories mises en avant sur
+     * la page d'accueil Front
+     *
+     * @param Request $request
+     * @return void
+     * @throws AuthorizationException
+     */
+    public function order(Request $request): void
     {
         $categories = Category::all();
         $categoriesOrderByHomePage = Category::where('home_order', '>', 0)->orderBy('home_order', 'asc')->get()->all();
@@ -137,7 +188,15 @@ class CategoryController extends CoreController {
         ]);
     }
 
-    public function updateOrder(Request $request)
+    /**
+     * Méthode gérant la soumission du formulaire de choix
+     * des catégories mises en avant sur la page d'accueil
+     * du site Front
+     *
+     * @param Request $request
+     * @return Application|RedirectResponse|Redirector
+     */
+    public function updateOrder(Request $request): Redirector|RedirectResponse|Application
     {
         $validated = $request->validate([
             'location' => 'bail|required|array:1,2,3,4,5|size:5',
@@ -172,7 +231,15 @@ class CategoryController extends CoreController {
         return redirect('categorie/ordre');
     }
 
-    public function delete(Request $request, $id)
+    /**
+     * Méthode gérant la suppression d'une catégorie
+     *
+     * @param Request $request
+     * @param int $id
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function delete(Request $request, int $id): RedirectResponse
     {
         $this->authorize('delete', Category::class);
 

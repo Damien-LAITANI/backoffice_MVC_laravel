@@ -2,15 +2,16 @@
 
 namespace App\Http\Controllers;
 
-class CoreController extends Controller {
+class CoreController extends Controller
+{
     /**
      * Méthode permettant d'afficher du code HTML en se basant sur les views
      *
-     * @param string $viewName Nom du fichier de vue
-     * @param array $viewData Tableau des données à transmettre aux vues
+     * @param string $viewName
+     * @param array $viewData
      * @return void
      */
-    protected function show(string $viewName, $viewData = [])
+    protected function show(string $viewName, array $viewData = []): void
     {
 
         $viewData['currentPage'] = $viewName;

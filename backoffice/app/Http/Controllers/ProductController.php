@@ -6,11 +6,21 @@ use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Type;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
 
 class ProductController extends CoreController
 {
-    public function list(Request $request)
+    /**
+     * Méthode gérant la page affichant la liste des produits
+     *
+     * @param Request $request
+     * @return void
+     */
+    public function list(Request $request): void
     {
         $products = Product::all();
 
@@ -20,7 +30,14 @@ class ProductController extends CoreController
         ]);
     }
 
-    public function add(Request $request)
+    /**
+     * Méthode gérant la page permettant d'ajouter un produit
+     *
+     * @param Request $request
+     * @return void
+     * @throws AuthorizationException
+     */
+    public function add(Request $request): void
     {
         $this->authorize('create', Product::class);
         $errors_messages = isset($request->session()->all()['errors']) ? $request->session()->get('errors')->getMessages() : null;
@@ -39,7 +56,14 @@ class ProductController extends CoreController
         ]);
     }
 
-    public function create(Request $request)
+    /**
+     * Méthode gérant la page recevant les données du formulaire d'ajout d'un produit
+     *
+     * @param Request $request
+     * @return Application|RedirectResponse|Redirector
+     * @throws AuthorizationException
+     */
+    public function create(Request $request): Redirector|RedirectResponse|Application
     {
         $this->authorize('create', Product::class);
         $validated = $request->validate([
@@ -82,7 +106,15 @@ class ProductController extends CoreController
         return redirect('produit/ajout');
     }
 
-    public function edit(Request $request,$id)
+    /**
+     * Méthode gérant la page permettant d'afficher la formulaire d'édition d'un produit
+     *
+     * @param Request $request
+     * @param int $id
+     * @return void
+     * @throws AuthorizationException
+     */
+    public function edit(Request $request, int $id): void
     {
         $this->authorize('update', Product::class);
         $errors_messages = isset($request->session()->all()['errors']) ? $request->session()->get('errors')->getMessages() : null;
@@ -100,7 +132,16 @@ class ProductController extends CoreController
         ]);
     }
 
-    public function update(Request $request, $id)
+    /**
+     * Méthode gérant la page traitant les informations envoyées par le formulaire
+     * d'édition d'un produit
+     *
+     * @param Request $request
+     * @param int $id
+     * @return Application|Redirector|RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function update(Request $request, int $id): Redirector|RedirectResponse|Application
     {
         $this->authorize('update', Product::class);
         $validated = $request->validate([
@@ -145,7 +186,15 @@ class ProductController extends CoreController
         return redirect('produit/modifier/' . $id);
     }
 
-    public function delete(Request $request, $id)
+    /**
+     * Méthode gérant la suppression d'un produit
+     *
+     * @param Request $request
+     * @param int $id
+     * @return RedirectResponse
+     * @throws AuthorizationException
+     */
+    public function delete(Request $request, int $id): RedirectResponse
     {
         $this->authorize('delete', Product::class);
 

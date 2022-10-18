@@ -28,7 +28,7 @@
         <div class="row">
             <?php for ($i = 0; $i <= 1; $i++): ?>
                 <div class="col-md-6">
-                    <div class="card border-0 text-white text-center"><img src="<?= $categoriesOrderByHomePage[$i]->picture ?>" alt="Card image" class="card-img" width="200px">
+                    <div class="card border-0 text-white text-center"><img src="<?= $categoriesOrderByHomePage[$i]->picture ?>" alt="Image de la catégorie <?= $categoriesOrderByHomePage[$i]->name ?>" class="card-img" width="200px">
                         <div class="card-img-overlay d-flex align-items-center">
                             <div class="w-100 py-3">
                                 <h2 class="display-3 font-weight-bold mb-4 categoryTitle"><?= $categoriesOrderByHomePage[$i]->name ?></h2><a href="#" class="btn btn-light">C'est parti</a>
@@ -42,7 +42,7 @@
 
             <?php for ($i = 2; $i <= 4; $i++): ?>
             <div class="col-lg-4 ">
-                <div class="card border-0 text-center text-white"><img src="<?= $categoriesOrderByHomePage[$i]->picture ?>" alt="Card image" class="card-img" width="150px">
+                <div class="card border-0 text-center text-white"><img src="<?= $categoriesOrderByHomePage[$i]->picture ?>" alt="Image de la catégorie <?= $categoriesOrderByHomePage[$i]->name ?>" class="card-img" width="150px">
                     <div class="card-img-overlay d-flex align-items-center">
                         <div class="w-100">
                             <h2 class="display-4 mb-4 categoryTitle"><?= $categoriesOrderByHomePage[$i]->name ?></h2><a href="#" class="btn btn-link text-dark bg-light">Faire un tour
