@@ -16,8 +16,10 @@
                     </div>
                 </div>
             <?php endfor;?>
-        <button type="submit" class="btn btn-primary btn-block mt-5">Valider</button>
-        <p class="bg-success mt-2 text-white <?= isset($success_message) ?  'p-2' : '' ?>"><?= $success_message ?></p>
+            <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-primary btn-block mt-5">Valider</button>
+                <p class="bg-success mt-2 text-white <?= isset($success_message) ?  'p-2' : '' ?>"><?= $success_message ?></p>
+            </div>
     </form>
 </section>
 <section>
