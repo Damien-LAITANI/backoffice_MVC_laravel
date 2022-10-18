@@ -139,8 +139,6 @@ class CategoryController extends CoreController {
 
     public function updateOrder(Request $request)
     {
-        //$this->authorize('update', Category::class);
-
         $validated = $request->validate([
             'location' => 'bail|required|array:1,2,3,4,5|size:5',
         ],

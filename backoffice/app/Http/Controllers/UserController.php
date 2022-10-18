@@ -29,7 +29,7 @@ class UserController extends CoreController {
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/home');
+            return redirect('/categorie/ordre');
         }
         return back()->withErrors([
             'email' => 'L\'email ou le mot de passe ne correspond pas',

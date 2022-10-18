@@ -23,8 +23,9 @@
     </form>
 </section>
 <section>
-    <div class="container-fluid w-75">
-        <div class="row mx-0">
+    <div class="container-fluid w-75 my-2 border py-2">
+        <h3>Visuel de la page d'accueil :</h3>
+        <div class="row">
             <?php for ($i = 0; $i <= 1; $i++): ?>
                 <div class="col-md-6">
                     <div class="card border-0 text-white text-center"><img src="<?= $categoriesOrderByHomePage[$i]->picture ?>" alt="Card image" class="card-img" width="200px">
