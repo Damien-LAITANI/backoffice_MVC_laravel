@@ -7,12 +7,12 @@
 
         <div class="mb-4">
             <label for="validationCustom01" class="form-label">Email</label>
-            <input type="text" name="email" class="form-control" id="validationEmail" value="<?= old('email') ?? 'lucie@oclock.io' ?>" placeholder="test@test.test" required>
+            <input type="text" name="email" class="form-control" id="validationEmail" value="<?= old('email') ?? 'user@test.com' ?>" placeholder="test@test.test" required>
         </div>
 
         <div class="mb-4">
             <label for="validationCustom02" class="form-label">Mot de passe</label>
-            <input type="password" name="password" class="form-control" id="validationPassword" value="cameleon" required>
+            <input type="password" name="password" class="form-control" id="validationPassword" value="user" required>
         </div>
 
         <div class="d-grid gap-2">
