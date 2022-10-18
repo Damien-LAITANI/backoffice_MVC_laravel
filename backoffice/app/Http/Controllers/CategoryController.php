@@ -22,7 +22,8 @@ class CategoryController extends CoreController
         $categories = Category::all();
         $this->show('category/list', [
             'categories' => $categories,
-            'success_message' => $request->session()->get('success')
+            'success_message' => $request->session()->get('success'),
+            'error_message' => $request->session()->get('error'),
         ]);
     }
 
@@ -251,5 +252,7 @@ class CategoryController extends CoreController
             $request->session()->flash('success', 'La catégorie <strong>' . $category->name . '</strong> a bien été supprimée');
            return redirect()->back();
         }
+        $request->session()->flash('error', 'La catégorie <strong>' . $category->name . '</strong> n\'a pas pu être supprimée');
+        return redirect()->back();
     }
 }

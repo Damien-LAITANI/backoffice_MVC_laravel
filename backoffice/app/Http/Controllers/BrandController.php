@@ -23,7 +23,8 @@ class BrandController extends CoreController
 
         $this->show('brand/list', [
             'brands' => $brands,
-            'success_message' => $request->session()->get('success')
+            'success_message' => $request->session()->get('success'),
+            'error_message' => $request->session()->get('error'),
         ]);
     }
 
@@ -165,5 +166,7 @@ class BrandController extends CoreController
             $request->session()->flash('success', 'La marque <strong>' . $brand->name . '</strong> a bien été supprimée');
            return redirect()->back();
         }
+        $request->session()->flash('error', 'La marque <strong>' . $brand->name . '</strong> n\'a pas pu être supprimée');
+        return redirect()->back();
     }
 }

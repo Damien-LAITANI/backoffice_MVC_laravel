@@ -23,7 +23,8 @@ class TagController extends CoreController
 
         $this->show('tag/list', [
             'tags' => $tags,
-            'success_message' => $request->session()->get('success')
+            'success_message' => $request->session()->get('success'),
+            'error_message' => $request->session()->get('error'),
         ]);
     }
 
@@ -165,5 +166,7 @@ class TagController extends CoreController
             $request->session()->flash('success', 'Le tag <strong>' . $tag->name . '</strong> a bien été supprimé');
            return redirect()->back();
         }
+        $request->session()->flash('error', 'Le tag <strong>' . $tag->name . '</strong> n\'a pas pu être supprimé');
+        return redirect()->back();
     }
 }

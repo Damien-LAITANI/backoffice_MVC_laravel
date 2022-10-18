@@ -1,5 +1,5 @@
 <section class="container my-4">
-    <p class="bg-danger <?= isset($error_message) ?  'p-2 text-white' : '' ?>"><?= $error_message ?></p>
+    <p class="bg-<?= isset($success_message)  ?  'success p-2 text-white' : '', isset($error_message) ? 'danger p-2 text-white' : '' ?>"><?= $success_message ?? $error_message ?></p>
     <h2>Les 5 catégories affichées sur la home page</h2>
     <form id="orderForm" action="" method="POST" class="mt-5">
         <?= csrf_field() ?>
@@ -18,7 +18,6 @@
             <?php endfor;?>
             <div class="d-grid gap-2">
                 <button type="submit" class="btn btn-primary btn-block mt-5">Valider</button>
-                <p class="bg-success mt-2 text-white <?= isset($success_message) ?  'p-2' : '' ?>"><?= $success_message ?></p>
             </div>
     </form>
 </section>
