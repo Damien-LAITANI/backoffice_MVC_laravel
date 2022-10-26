@@ -45,7 +45,7 @@
             <select name="category" id="category" class="form-control">
                     <option value="">------</option>
                     <?php foreach($categories as $category): ?>
-                        <option value="<?= $category->id ?>"<?= $product->category->name === $category->name ? 'selected' : '' ?>><?= $category->name ?></option>
+                        <option value="<?= $category->id ?>"<?= (isset($product->category) && $product->category->name === $category->name) ? 'selected' : '' ?>><?= $category->name ?></option>
                     <?php endforeach; ?>
             </select>
             <p class="text-danger"><?= $errors_messages['category'][0] ?? '' ?></p>
@@ -55,7 +55,7 @@
             <select name="brand" id="brand" class="form-control">
                     <option value="">------</option>
                     <?php foreach($brands as $brand): ?>
-                        <option value="<?= $brand->id ?>" <?= $product->brand->name === $brand->name ? 'selected' : '' ?>><?= $brand->name ?></option>
+                        <option value="<?= $brand->id ?>" <?= (isset($product->brand) && $product->brand->name === $brand->name) ? 'selected' : '' ?>><?= $brand->name ?></option>
                     <?php endforeach; ?>
             </select>
             <p class="text-danger"><?= $errors_messages['brand'][0] ?? '' ?></p>
@@ -65,7 +65,7 @@
             <select name="type" id="type" class="form-control">
                     <option value="">------</option>
                     <?php foreach($types as $type): ?>
-                        <option value="<?= $type->id ?>" <?= $product->type->name === $type->name ? 'selected' : '' ?>><?= $type->name ?></option>
+                        <option value="<?= $type->id ?>" <?= (isset($product->type) && $product->type->name === $type->name) ? 'selected' : '' ?>><?= $type->name ?></option>
                     <?php endforeach; ?>
             </select>
             <p class="text-danger"><?= $errors_messages['type'][0] ?? '' ?></p>

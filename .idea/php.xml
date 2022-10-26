@@ -109,6 +109,7 @@
       <path value="$PROJECT_DIR$/backoffice/vendor/psr/log" />
       <path value="$PROJECT_DIR$/backoffice/vendor/ramsey/collection" />
       <path value="$PROJECT_DIR$/backoffice/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/backoffice/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

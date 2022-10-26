@@ -70,7 +70,6 @@
             </select>
             <p class="text-danger"><?= $errors_messages['type'][0] ?? '' ?></p>
         </div>
-
         <div class="d-grid gap-2">
             <button type="submit" class="btn btn-primary mt-5">Valider</button>
         </div>

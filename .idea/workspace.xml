@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2f7d3426-020c-4147-842b-b39b64f3052f" name="Changes" comment="" />
+    <list default="true" id="2f7d3426-020c-4147-842b-b39b64f3052f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backoffice/resources/views/category/order.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/backoffice/resources/views/category/order.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backoffice/resources/views/product/add.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/backoffice/resources/views/product/add.tpl.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backoffice/resources/views/product/edit.tpl.php" beforeDir="false" afterPath="$PROJECT_DIR$/backoffice/resources/views/product/edit.tpl.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -131,6 +137,7 @@
       <path value="$PROJECT_DIR$/backoffice/vendor/psr/log" />
       <path value="$PROJECT_DIR$/backoffice/vendor/ramsey/collection" />
       <path value="$PROJECT_DIR$/backoffice/vendor/ramsey/uuid" />
+      <path value="$PROJECT_DIR$/backoffice/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="2FLSkOupvAaqgiAw8pluGH3HHSQ" />
@@ -163,7 +170,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="bdb3165b-32e1-47fb-a0fc-106e3fd1a397" name="Changes" comment="" />
+      <changelist id="2f7d3426-020c-4147-842b-b39b64f3052f" name="Changes" comment="" />
       <created>1664270014448</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -173,6 +180,8 @@
       <workItem from="1664284396496" duration="4021000" />
       <workItem from="1664288491173" duration="1270000" />
       <workItem from="1664289786709" duration="6377000" />
+      <workItem from="1666171963070" duration="6000" />
+      <workItem from="1666805307287" duration="1594000" />
     </task>
     <servers />
   </component>
